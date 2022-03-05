@@ -1,0 +1,24 @@
+{
+  "name": "cucumber-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkim324/cucumber-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkim324/cucumber-project/issues"
+  },
+  "homepage": "https://github.com/tkim324/cucumber-project#readme",
+  "dependencies": {
+    "@cucumber/cucumber": "^7.3.2",
+    "selenium-webdriver": "^4.1.1"
+  }
+}
