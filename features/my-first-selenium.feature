@@ -12,8 +12,6 @@ Background: The Browser should be opened
     When I search 'Pferde' on input field id with 'SearchInput__input__26kZQ'
     Then This attribute 's-result-item' should be shown
 
-  //  Then This attribute '.s-result-list .s-result-item' should be shown
-
   #TODO - Homework : 세줄 이상의 시나리오를 작성하시오.
   # 추가된 StepDef
   # When I click on the '<any>' element
