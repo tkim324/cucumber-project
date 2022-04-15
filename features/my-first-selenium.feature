@@ -1,10 +1,9 @@
 Feature: The Homework1 : Search with Amazon
 
-Background: The Browser should be opened
-
-
-  Scenario : Search with screen UI
+  Background: The Browser should be opened
     Given I open the Browser with url 'https://www.amazon.de'
+
+  Scenario: Search with screen UI
     When I search 'playmobil' in the input-box '#twotabsearchtextbox'
     Then This attribute '.a-section a-spacing-none._bGlmZ_logo_3eW0R' should be shown
     When I click on the '.a-section a-spacing-none._bGlmZ_logo_3eW0R' element

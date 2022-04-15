@@ -1,13 +1,12 @@
 'use strict';
-const {By, Key, Builder} = require("selenium-webdriver");
-require("chromedriver");
-
-const { Given, When, Then } = require('@cucumber/cucumber');
-let driver;
+const {By, Key, Builder} = require('selenium-webdriver');
+const {Given, When, Then} = require('@cucumber/cucumber');
+const {expect} = require('chai');
 
 Given(/^I open the Browser with url '(.*)'$/, async function (link) {
-    this.driver = await (new Builder().forBrowser('chrome')).build();
+    this.driver = new Builder().forBrowser('chrome').build();
     await this.driver.get(link);
+    await this.driver.sleep(1000);
     await this.driver.findElement(By.id("sp-cc-accept")).click();
 });
 

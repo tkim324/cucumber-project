@@ -2,7 +2,7 @@
   "name": "cucumber-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js.js",
+  "main": "index.js",
   "scripts": {
     "test": "cucumber-js"
   },
@@ -20,7 +20,7 @@
   "dependencies": {
     "@cucumber/cucumber": "^7.3.2",
     "chai": "^4.3.6",
-    "chromedriver": "^99.0.0",
+    "chromedriver": "^100.0.0",
     "selenium": "^2.20.0",
     "selenium-webdriver": "^4.1.1"
   }
