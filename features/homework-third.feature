@@ -10,8 +10,11 @@ Feature: Search with selenium-automation practice
   Then This attribute '#SubmitCreate' should be shown
   When I click on the '#SubmitCreate' element
   When I wait element about 1000ms
-  Then This attribute '//*[@id="create_account_error"]/ol/li/text()' should be with 'Invalid email address'
+  Then This attribute '.alert-danger' should be shown
+  When I wait element about 2000ms
+  Then This attribute '.alert-danger' should be with 'Invalid email address'
   Then The browser is closed
+
   #   When I search 'geldbörse klein' in the input-box '#twotabsearchtextbox'
   #   Then This attribute 'h2.a-size-mini span' should be shown with 'geld, börse, beutel'
   #   Then This attribute 'div.a-section #B07MY7Q5B3-best-seller' should be shown

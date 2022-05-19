@@ -1,40 +1,44 @@
 'use strict';
 const {By, Key, Builder} = require('selenium-webdriver');
-const {Given, When, Then} = require('@cucumber/cucumber');
+const {Given, When, Then, BeforeAll, AfterAll} = require('@cucumber/cucumber');
 const {expect} = require('chai');
 require('chromedriver')
 
+const config = require('../../config/conf')
+
+
 //4-1. 셀레니움 자동화시스템 연습용 사이트 열기
-Given(/^I open the Browser with url '(.*)'$/, async function (link) {
+Given(/^I open the Browser with url '(.*)'$/, {timeout: config.defaultTimeout}, async function (link) {
     this.driver = new Builder().forBrowser('chrome').build();
     await this.driver.get(link);
     //await this.driver.findElement(By.id("sp-cc-accept")).click(); 쿠키설정
 });
 
 //4-2. 메인 로고 확인
-Then(/^This attribute '(.*)' should be shown$/, async function (cssValue) {
+Then(/^This attribute '(.*)' should be shown$/, {timeout: config.defaultTimeout}, async function (cssValue) {
     let isDisplayed = await this.driver.findElement(By.css(cssValue)).isDisplayed();
 });
 
 //4-3. 로그인 페이지로 이동
-When(/^I click on the '(.*)' element$/, async function (cssValue) {
+When(/^I click on the '(.*)' element$/, {timeout: config.defaultTimeout}, async function (cssValue) {
     await this.driver.findElement(By.css(cssValue)).click();
 });
 
-When(/^I wait element about 1000ms$/, async function () {
-    await this.driver.sleep(2000);
-    // await this.driver.wait(until.elementLocated(By.css(cssValue)),10000);
+When(/^I wait element about (\d+)ms$/, async function (waitTime) {
+    await this.driver.sleep(waitTime);
 });
 
 //4-4. 계정 생성 클릭
 //4-5. 에러메세지 확인
-Then(/^This attribute '(.*)' should be with 'Invalid email address'$/, async function (cssValue) {
-    let text = await this.driver.findElement(By.xpath(cssValue)).getText();
-    return expect(text).to.equal("Invalid email address");
+Then(/^This attribute '(.*)' should be with 'Invalid email address'$/, {timeout: config.defaultTimeout}, async function (cssValue) {
+    let element = await this.driver.findElement(By.css(cssValue));
+    let text = await element.getText();
+    return expect(text).to.equal("Invalid email address.");
 });
 
-Then (/^The browser is closed$/, async function(){
-    await this.driver.quit();
+Then(/^The browser is closed$/, async function () {
+    await this.driver.close();
+    // await this.dirver.quit() vs await this.driver.close() 차이 설명 가능....?
 });
 
 /*
